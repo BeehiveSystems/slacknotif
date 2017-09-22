@@ -14,7 +14,7 @@ def post_to_slack():
     slack_message = print("Test.")
     slack_url = webhook
     payload = {'username:' : 'slack_username' : 'text' : "slack_message"}
-    r = requests.get('https://hooks.slack.com/services/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', params=payload)
+    r = requests.get('%s' % webhook, params=payload)
 
 post_to_slack()
 
