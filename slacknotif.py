@@ -16,7 +16,7 @@ import json
 import sys
 
 def post_to_slack():
-    slack_message = "".join(sys.argv)
+    slack_message = "".join(sys.stdin)
     slack_username = socket.gethostname()
     payload = {'username': slack_username, 'text': slack_message,}
     requests.post("%s", json=payload)
