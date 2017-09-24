@@ -15,8 +15,14 @@ def post_to_slack():
     requests.post(webhook, json=payload)
 post_to_slack()
 
+#Still need to add webhook in /opt/ file. 
+
 with io.FileIO("%s" % filename, "w") as file:
-    file.write("def post_to_slack():".encode())
+    file.write("import socket\n".encode())
+    file.write("import io\n".encode())
+    file.write("import requests\n".encode())
+    file.write("import json\n".encode())
+    file.write("def post_to_slack():\n".encode())
     file.write("    slack_message = \"Test.\"\n".encode())
     file.write("    slack_username = socket.gethostname()\n".encode())
     file.write("    payload = {'username': slack_username, 'text': slack_message,}\n".encode())
