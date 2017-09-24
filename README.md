@@ -7,7 +7,8 @@ Current usage:
 
 -Run slacknotif.py as sudo/root.  
 -Enter your Slack webhook url.  
--Call slacknotif with ```/opt/slacknotif Hello World!```  
+-Run chmod +x on /opt/slacknotif.
+-Call slacknotif with ```echo "Hello World!" | /opt/slacknotif```  
 -Slacknotif will send you a message on Slack with "Hello World!" as its content.  
 
 More to come soon.
