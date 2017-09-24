@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import io
 import shutil
+import os
 
 key = input("Be sure to run this as root/sudo. Press enter to continue.")
 webhook = input("Paste your slack webhook url: ").encode()
@@ -23,3 +24,6 @@ def post_to_slack():
 post_to_slack()""".encode() % webhook)
 
 shutil.move("./slacknotif", "/opt/%s" % filename)
+os.chmod("/opt/%s" % filename, 0o755)
+
+print("Slacknotif has been installed successfully.")
