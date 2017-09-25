@@ -6,6 +6,7 @@ import os
 key = input("Be sure to run this as root/sudo. Press enter to continue.")
 webhook = input("Paste your slack webhook url: ").encode()
 filename = "slacknotif"
+system = input("Are you using a Debian or RHEL based system?").lower()
 
 with io.FileIO("%s" % filename, "w") as file:
     file.write(
@@ -27,3 +28,18 @@ shutil.move("./slacknotif", "/opt/%s" % filename)
 os.chmod("/opt/%s" % filename, 0o755)
 
 print("Slacknotif has been installed successfully.")
+
+if system = debian:
+	with io.FileIO("/etc/cron.d/slack", "w") as file:
+		file.write(
+			"""SHELL=/bin/sh
+			PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+			30 8 * * * root /usr/bin/apt-get update && /usr/bin/apt-get install unattended-upgrades | /opt/%s""" % filename)
+if system = rhel:
+	with io.FileIO("/etc/cron.d/slack", "w") as file:
+		file.write( 
+			"""SHELL=/bin/sh
+			PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+			30 8 * * * root /usr/bin/yum update | /opt/%s""" % filename)
+else:
+	print("Unrecognized system type.")
