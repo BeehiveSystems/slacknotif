@@ -24,7 +24,7 @@ def post_to_slack():
     requests.post("%s", json=payload)
 post_to_slack()""".encode() % webhook)
 
-shutil.move("./slacknotif", "/opt/%s" % filename)
+shutil.move("./slacknotif", "/usr/bin/%s" % filename)
 os.chmod("/opt/%s" % filename, 0o755)
 
 if system == "debian":
