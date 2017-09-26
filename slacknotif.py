@@ -25,7 +25,7 @@ def post_to_slack():
 post_to_slack()""".encode() % webhook)
 
 shutil.move("./slacknotif", "/usr/bin/%s" % filename)
-os.chmod(/usr/bin/%s" % filename, 0o755)
+os.chmod("/usr/bin/%s" % filename, 0o755)
 
 if system == "debian":
 	print("Adding cron updates for apt.")
