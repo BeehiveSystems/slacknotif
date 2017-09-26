@@ -25,7 +25,7 @@ def post_to_slack():
 post_to_slack()""".encode() % webhook)
 
 shutil.move("./slacknotif", "/usr/bin/%s" % filename)
-os.chmod("/opt/%s" % filename, 0o755)
+os.chmod(/usr/bin/%s" % filename, 0o755)
 
 if system == "debian":
 	print("Adding cron updates for apt.")
@@ -33,13 +33,13 @@ if system == "debian":
 		file.write(
 			"""SHELL=/bin/sh
 			PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-			30 8 * * * root /usr/bin/apt-get update && /usr/bin/apt-get install unattended-upgrades | /opt/%(filename)""".encode())
+			30 8 * * * root /usr/bin/apt-get update && /usr/bin/apt-get install unattended-upgrades | /usr/bin/%(filename)""".encode())
 elif system == "rhel":
 	print("Adding cron updates for yum.")
 	with io.FileIO("/etc/cron.d/slack", "w") as file:
 		file.write( 
 			"""SHELL=/bin/sh
 			PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-			30 8 * * * root /usr/bin/yum update | /opt/%(filename)""".encode())
+			30 8 * * * root /usr/bin/yum update | /usr/bin/%(filename)""".encode())
 else:
 	print("Unrecognized system type.")
